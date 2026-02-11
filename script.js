@@ -1,8 +1,3 @@
-let activeFilters = {
-	status: "all",
-	capacity: null,
-};
-
 const reservations = [
 	{
 		id: 1,
@@ -85,7 +80,8 @@ const btnConfirm = reservationBox.querySelector(".btn-confirm");
 
 let timeSlots = [];
 let selectedTime = null;
-reservationGrid.addEventListener("click", (event) => {
+
+function handleTableClick(event) {
 	const isFree = event.target.classList.contains("free");
 	const timesContainer = reservationBox.querySelector(".times");
 	timesContainer.innerHTML = "";
@@ -102,7 +98,8 @@ reservationGrid.addEventListener("click", (event) => {
 
 		reservationBox.classList.remove("modal-hidden");
 	}
-});
+}
+reservationGrid.addEventListener("click", handleTableClick);
 
 const timesContainer = reservationBox.querySelector(".times");
 
