@@ -27,6 +27,13 @@ const reservations = [
 		status: "free",
 		timeSlots: ["15:00", "16:45", "18:50"],
 	},
+	{
+		id: 5,
+		name: "Table 5",
+		capacity: 2,
+		status: "free",
+		timeSlots: ["12:00", "13:45", "18:00"],
+	},
 ];
 
 document.querySelector(".filters").addEventListener("click", (e) => {
@@ -66,7 +73,7 @@ function renderReservations(data) {
 		if (table.status === "reserved") {
 			card.innerHTML = `${table.name}, ${table.capacity}, ${table.status}`;
 		} else {
-			card.innerHTML = `${table.name}, ${table.capacity}, ${table.timeSlots.join(", ")}, ${table.status}`;
+			card.innerHTML = `${table.name}, ${table.capacity}, ${table.timeSlots.join(", ")}, ${table.capacity}`;
 		}
 
 		reservationGrid.appendChild(card);
@@ -140,4 +147,17 @@ btnConfirm.addEventListener("click", () => {
 btnCancel.addEventListener("click", () => {
 	selectedTable = null;
 	reservationBox.classList.add("modal-hidden");
+});
+
+document.querySelector(".filters").addEventListener("click", (e) => {
+	const button = e.target.closest(".filter-btn");
+	if (!button) return;
+
+	if (button.dataset.capacity) {
+		const capacity = parseInt(button.dataset.capacity, 10);
+		console.log(capacity);
+		const filtered = reservations.filter((table) => table.capacity == capacity);
+		console.log(filtered);
+		renderReservations(filtered);
+	}
 });
