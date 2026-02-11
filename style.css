@@ -1,0 +1,163 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: system-ui, sans-serif;
+}
+
+body {
+	background: #f4f6f8;
+	color: #222;
+}
+
+.header {
+	padding: 1rem 2rem;
+	background: #111;
+	color: #fff;
+}
+
+.app {
+	display: grid;
+	grid-template-columns: 250px 1fr;
+	min-height: calc(100vh - 70px);
+}
+
+.filters {
+	background: #fff;
+	padding: 1.5rem;
+	border-right: 1px solid #ddd;
+}
+
+.filters h2 {
+	margin-bottom: 1rem;
+}
+
+.filter-group {
+	margin-bottom: 1.5rem;
+}
+
+.filter-group p {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.filter-btn {
+	display: inline-block;
+	margin: 0.25rem 0.25rem 0 0;
+	padding: 0.4rem 0.7rem;
+	border: 1px solid #ccc;
+	background: #fff;
+	cursor: pointer;
+}
+
+.filter-btn.active {
+	background: #111;
+	color: #fff;
+}
+
+.content {
+	padding: 2rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1.5rem;
+}
+
+.card {
+	background: #fff;
+	padding: 1rem;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	transition:
+		transform 0.1s ease,
+		box-shadow 0.1s ease;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card.free {
+	border-left: 6px solid #2ecc71;
+}
+
+.card.reserved {
+	border-left: 6px solid #e74c3c;
+	opacity: 0.4;
+}
+.card.selected {
+	border-left: 6px solid #f6c42e;
+	opacity: 0.7;
+}
+
+.card h3 {
+	margin-bottom: 0.5rem;
+}
+
+.card .meta {
+	font-size: 0.9rem;
+	color: #555;
+}
+
+.modal {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-hidden {
+	display: none;
+}
+
+.modal-content {
+	background: #fff;
+	padding: 1.5rem;
+	width: 320px;
+	border-radius: 6px;
+}
+
+.times {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1rem 0;
+}
+
+.time-slot {
+	padding: 0.4rem 0.6rem;
+	border: 1px solid #ccc;
+	margin: 0.25rem;
+	cursor: pointer;
+}
+
+.time-slot.active {
+	background: #111;
+	color: #fff;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.btn-confirm {
+	background: #111;
+	color: #fff;
+	border: none;
+}
+
+.btn-cancel {
+	background: transparent;
+	border: 1px solid #ccc;
+}

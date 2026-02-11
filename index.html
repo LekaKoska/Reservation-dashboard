@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Reservation Dashboard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header class="header">
+			<h1>Reservation Dashboard</h1>
+		</header>
+
+		<main class="app">
+			<aside class="filters">
+				<h2>Filters</h2>
+
+				<div class="filter-group">
+					<p>Status</p>
+					<button data-status="all" class="filter-btn active">All</button>
+					<button data-status="free" class="filter-btn">Free</button>
+					<button data-status="reserved" class="filter-btn">Reserved</button>
+				</div>
+
+				<div class="filter-group">
+					<p>Capacity</p>
+					<button data-capacity="2" class="filter-btn">2+</button>
+					<button data-capacity="4" class="filter-btn">4+</button>
+					<button data-capacity="6" class="filter-btn">6+</button>
+				</div>
+			</aside>
+
+			<section class="content">
+				<div class="grid" id="reservationGrid"></div>
+			</section>
+		</main>
+
+		<div class="modal modal-hidden" id="reservationModal">
+			<div class="modal-content">
+				<h3 id="modalTitle">Reservation</h3>
+
+				<div class="times"></div>
+
+				<div class="modal-actions">
+					<button class="btn-cancel">Cancel</button>
+					<button class="btn-confirm">Reserve</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
