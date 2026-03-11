@@ -1,3 +1,3 @@
 export function reservedTableStatus(table) {
-	return table.status === "reserved";
+	return table.status === "taken";
 }
