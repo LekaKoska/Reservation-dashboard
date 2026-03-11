@@ -1,3 +1,3 @@
 export function freeTableStatus(table) {
-	return table.status === "free";
+	return table.status === "available";
 }
