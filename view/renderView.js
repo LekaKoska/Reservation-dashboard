@@ -3,13 +3,12 @@ export function renderReservations(data) {
 	reservationGrid.innerHTML = "";
 
 	data.forEach((table) => {
-		console.log(table);
 		const card = document.createElement("div");
 		card.classList.add("card");
 		card.classList.add(table.status);
 
 		card.dataset.id = table.id;
-		if (table.status === "reserved") {
+		if (table.status === "taken") {
 			card.innerHTML = `${table.table_id}, ${table.location}, ${table.status}`;
 		} else {
 			card.innerHTML = `${table.table_id}, ${table.location}, ${table.status}`;

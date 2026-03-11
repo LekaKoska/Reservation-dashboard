@@ -1,7 +1,13 @@
 import { fetchTables } from "../services/api.js";
 
+export let reservations = [];
+
 export async function loadTables() {
-	const tables = await fetchTables();
-	return tables.data;
+	const response = await fetchTables();
+	reservations = response.data;
+	return reservations;
 }
-export const reservations = [];
+
+export function getReservations() {
+	return reservations;
+}
