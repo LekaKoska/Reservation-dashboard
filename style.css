@@ -161,3 +161,12 @@ body {
 	background: transparent;
 	border: 1px solid #ccc;
 }
+
+.loading input {
+	pointer-events: none;
+}
+
+.loading button {
+	pointer-events: none;
+	opacity: 0.6;
+}
