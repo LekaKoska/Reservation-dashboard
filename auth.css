@@ -92,3 +92,76 @@ body {
 ::placeholder {
 	color: #777;
 }
+
+#login-form {
+	background-color: #1a1a1a;
+	padding: 40px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border: 1px solid #333;
+}
+
+#login-form h2 {
+	color: #fff;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#login-form input {
+	background-color: #262626;
+	border: 1px solid #444;
+	padding: 12px 15px;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+#login-form input:focus {
+	border-color: #007bff;
+}
+
+#login-form button {
+	background-color: #ffffff;
+	color: #000000;
+	border: none;
+	padding: 14px;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 10px;
+}
+
+#login-form button:hover {
+	background-color: #e0e0e0;
+}
+
+.auth-link {
+	color: #888;
+	text-align: center;
+	font-size: 14px;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.auth-link a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+.loading input {
+	pointer-events: none;
+}
+
+.loading button {
+	pointer-events: none;
+	opacity: 0.6;
+}
