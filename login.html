@@ -3,15 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login</title>
+		<title>Document</title>
+		<link rel="stylesheet" href="auth.css" />
 	</head>
 	<body>
 		<form id="login-form">
-			<input type="email" id="email" />
-			<input type="password" id="password" />
-			<button>Login</button>
-		</form>
+			<h2>Welcome Back</h2>
+			<input type="email" id="email" placeholder="Email Address" required />
+			<input type="password" id="password" placeholder="Password" required />
+			<button type="submit">Login</button>
 
-		<script type="module" src="controller/AuthController.js"></script>
+			<p class="auth-link">
+				Don't have an account? <a href="register.html">Sign up</a>
+			</p>
+
+			<div class="message"></div>
+		</form>
 	</body>
 </html>
