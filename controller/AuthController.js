@@ -1,4 +1,4 @@
-import { logout, register } from "../services/api.js";
+import { register } from "../services/api.js";
 
 if (localStorage.getItem("token")) {
 	window.location.href = "/index.html";
@@ -16,19 +16,22 @@ registerForm.addEventListener("submit", async (e) => {
 		const response = await register(name, email, password);
 		const result = await response.json();
 
-		localStorage.setItem("token", result.token);
-		localStorage.setItem("user_name", result.data.name);
-
-		if (!response.ok) {
-			document.querySelector(".messsage").innerHTML = result.message;
+		const message = document.querySelector(".message");
+		if (response.status === 422) {
+			message.classList.add("error");
+			message.innerHTML = result.message;
+			return;
 		}
 		if (response.status === 201) {
-			document.querySelector(".message").innerHTML = result.message;
+			localStorage.setItem("token", result.token);
+			localStorage.setItem("user_name", result.data.name);
+			message.classList.add("success");
+			message.innerHTML = result.message;
 			registerForm.classList.remove("loading");
 			registerForm.reset();
 			window.location.href = "/index.html";
 		}
 	} catch (err) {
-		console.errro(`Error: ${err}`);
+		console.error(`Error: ${err}`);
 	}
 });
