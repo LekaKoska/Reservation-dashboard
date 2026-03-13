@@ -8,19 +8,6 @@ export async function fetchTables() {
 	return data;
 }
 
-// export async function login(email, password) {
-// 	const response = await fetch("http://127.0.0.1:8000/api/auth/login", {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 			Accept: "application/json",
-// 		},
-// 		body: JSON.stringify({ email, password }),
-// 	});
-// 	console.log(response);
-// 	return response;
-// }
-
 export async function register(name, email, password) {
 	const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
 		method: "POST",
@@ -37,3 +24,16 @@ export async function register(name, email, password) {
 	});
 	return response;
 }
+
+export const logout = async () => {
+	const token = localStorage.getItem("token");
+
+	await fetch("http://127.0.0.1:8000/api/auth/logout", {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			Accept: "application/json",
+		},
+	});
+	localStorage.removeItem("token");
+};
