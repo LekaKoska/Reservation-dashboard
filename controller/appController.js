@@ -3,6 +3,7 @@ import { initFilter } from "./filterTables.js";
 import { renderReservations } from "../view/renderView.js";
 import { handleTableClick } from "./handleTable.js";
 import { initTables } from "./tableController.js";
+import { logout } from "../services/api.js";
 
 export function initApp() {
 	initFilter();
@@ -58,6 +59,16 @@ export function initApp() {
 		state.selectedTable = null;
 		reservationBox.classList.add("modal-hidden");
 	});
+
+	const logoutBtn = document.querySelector("#logoutBtn");
+	logoutBtn.addEventListener("click", async (e) => {
+		e.preventDefault();
+		await logout();
+		window.location.href = "/login.html";
+	});
+	const name = localStorage.getItem("user_name");
+	const firstName = name.slice(0, name.indexOf(" "));
+	document.querySelector(".helloMsg").textContent = `Hello, ${firstName}`;
 
 	renderReservations(reservations);
 }
