@@ -1,19 +1,8 @@
-// import { login } from "../services/api.js";
-import { register } from "../services/api.js";
+import { logout, register } from "../services/api.js";
 
 if (localStorage.getItem("token")) {
 	window.location.href = "/index.html";
 }
-
-// const loginForm = document.querySelector("#login-form");
-
-// loginForm.addEventListener("submit", async (e) => {
-// 	e.preventDefault();
-// 	const email = document.querySelector("#email").value;
-// 	const password = document.querySelector("#password").value;
-// 	const response = await login(email, password);
-// 	console.log(response);
-// });
 
 const registerForm = document.querySelector("#register-form");
 
@@ -28,6 +17,7 @@ registerForm.addEventListener("submit", async (e) => {
 		const result = await response.json();
 
 		localStorage.setItem("token", result.token);
+		localStorage.setItem("user_name", result.data.name);
 
 		if (!response.ok) {
 			document.querySelector(".messsage").innerHTML = result.message;
@@ -39,13 +29,6 @@ registerForm.addEventListener("submit", async (e) => {
 			window.location.href = "/index.html";
 		}
 	} catch (err) {
-		console.log(`Error: ${err}`);
+		console.errro(`Error: ${err}`);
 	}
 });
-
-export function logout() {
-	document.querySelector("#logoutBtn").addEventListener("click", () => {
-		localStorage.removeItem("token");
-		console.log("RADI");
-	});
-}
