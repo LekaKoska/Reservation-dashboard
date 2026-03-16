@@ -35,10 +35,11 @@ export const logout = async () => {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			Accept: "application/json",
+			"Content-Type": "application/json",
 		},
 	});
 	localStorage.removeItem("token");
-	localStorage.removeItem("name");
+	localStorage.removeItem("user_name");
 };
 
 export async function login(email, password) {
@@ -52,6 +53,31 @@ export async function login(email, password) {
 			email,
 			password,
 		}),
+	});
+
+	return response;
+}
+
+export async function getUser() {
+	const token = localStorage.getItem("token");
+
+	return fetch(`${URL}/user`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			Accept: "application/json",
+		},
+	});
+}
+
+export async function resendMailVerification() {
+	const token = localStorage.getItem("token");
+	const response = await fetch(`${URL}/email/verification-notification`, {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
 	});
 
 	return response;
