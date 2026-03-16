@@ -43,12 +43,21 @@ if (loginForm) {
 			e.preventDefault();
 			const email = document.querySelector("#email").value;
 			const password = document.querySelector("#password").value;
+			const message = document.querySelector(".message");
 			const response = await login(email, password);
 			const result = await response.json();
-			console.log(result);
 
-			const message = document.querySelector(".message");
-			if (response.status === 422) {
+			if (response.status === 201) {
+				localStorage.setItem("token", result.token);
+				localStorage.setItem("user_name", result.data.name);
+				message.classList.add("success");
+				message.innerHTML = result.message;
+				loginForm.classList.remove("loading");
+				loginForm.reset();
+				window.location.href = "/index.html";
+			}
+
+			if (!result.status) {
 				message.classList.add("error");
 				message.innerHTML = result.message;
 				return;
