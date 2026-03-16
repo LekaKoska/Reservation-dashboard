@@ -1,8 +1,8 @@
 import { login, register } from "../services/api.js";
 
-if (localStorage.getItem("token")) {
-	window.location.href = "/index.html";
-}
+// if (localStorage.getItem("token")) {
+// 	window.location.href = "/index.html";
+// }
 
 const registerForm = document.querySelector("#register-form");
 if (registerForm) {
@@ -46,20 +46,24 @@ if (loginForm) {
 			const message = document.querySelector(".message");
 			const response = await login(email, password);
 			const result = await response.json();
+			if (!response.ok) {
+				message.classList.add("error");
+				message.innerHTML = result.message;
+				return;
+			}
 
-			if (response.status === 201) {
-				localStorage.setItem("token", result.token);
-				localStorage.setItem("user_name", result.data.name);
+			localStorage.setItem("token", result.token);
+			localStorage.setItem("user_name", result.data.name);
+
+			if (result.data.email_verified_at == null) {
+				window.location.href = "verify_mail.html";
+				return;
+			} else {
 				message.classList.add("success");
 				message.innerHTML = result.message;
 				loginForm.classList.remove("loading");
 				loginForm.reset();
 				window.location.href = "/index.html";
-			}
-
-			if (!result.status) {
-				message.classList.add("error");
-				message.innerHTML = result.message;
 				return;
 			}
 		});
