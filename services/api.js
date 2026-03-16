@@ -1,5 +1,7 @@
+const URL = "http://127.0.0.1:8000/api";
+
 export async function fetchTables() {
-	const response = await fetch("http://127.0.0.1:8000/api/tables");
+	const response = await fetch(`${URL}/tables`);
 
 	if (!response.ok) {
 		throw new Error("Request failed");
@@ -9,7 +11,7 @@ export async function fetchTables() {
 }
 
 export async function register(name, email, password) {
-	const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
+	const response = await fetch(`${URL}/auth/register`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -28,7 +30,7 @@ export async function register(name, email, password) {
 export const logout = async () => {
 	const token = localStorage.getItem("token");
 
-	await fetch("http://127.0.0.1:8000/api/auth/logout", {
+	await fetch(`${URL}/auth/logout`, {
 		method: "POST",
 		headers: {
 			Authorization: `Bearer ${token}`,
@@ -36,4 +38,20 @@ export const logout = async () => {
 		},
 	});
 	localStorage.removeItem("token");
+	localStorage.removeItem("name");
 };
+
+export async function login(email, password) {
+	const response = await fetch(`${URL}/auth/login`, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+		},
+		body: JSON.stringify({
+			email,
+			password,
+		}),
+	});
+
+	return response;
+}
