@@ -165,3 +165,49 @@ body {
 	pointer-events: none;
 	opacity: 0.6;
 }
+
+.verifyBlock {
+	background: #ffffff;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	max-width: 400px;
+	width: 90%; /* Responzivno za mobilne telefone */
+}
+
+.verifyBlock h2 {
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+	color: #2d3748;
+	line-height: 1.4;
+}
+
+#resendBtn {
+	background-color: #4a90e2;
+	color: white;
+	border: none;
+	padding: 12px 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+#resendBtn:hover {
+	background-color: #357abd;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+#resendBtn:active {
+	transform: translateY(0);
+}
+
+#resendBtn:disabled {
+	background-color: #cbd5e0;
+	cursor: not-allowed;
+	transform: none;
+}
