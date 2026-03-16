@@ -39,4 +39,4 @@ async function checkVerification() {
 	}
 }
 
-checkVerification();
+setInterval(checkVerification, 7000);
