@@ -67,8 +67,9 @@ export function initApp() {
 		window.location.href = "/login.html";
 	});
 	const name = localStorage.getItem("user_name");
-	const firstName = name.slice(0, name.indexOf(" "));
-	document.querySelector(".helloMsg").textContent = `Hello, ${firstName}`;
+	const firstName = name.trim().split(" ")[0];
+	const cleanName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+	document.querySelector(".helloMsg").textContent = `Hello, ${cleanName}`;
 
 	renderReservations(reservations);
 }
