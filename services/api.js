@@ -60,13 +60,29 @@ export async function login(email, password) {
 
 export async function getUser() {
 	const token = localStorage.getItem("token");
+	if (!token) return;
 
-	return fetch(`${URL}/user`, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-			Accept: "application/json",
-		},
-	});
+	try {
+		const response = await fetch(`${URL}/user`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		if (!response.ok) {
+			localStorage.removeItem("token");
+			return;
+		}
+		const user = await response.json();
+		if (user.email_verified_at == null) {
+			window.location.href = "/verify_mail.html";
+			return;
+		}
+
+		window.location.href = "/index.html";
+	} catch (err) {
+		console.error(err);
+	}
 }
 
 export async function resendMailVerification() {
