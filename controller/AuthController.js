@@ -1,8 +1,6 @@
-import { login, register } from "../services/api.js";
+import { login, register, getUser } from "../services/api.js";
 
-// if (localStorage.getItem("token")) {
-// 	window.location.href = "/index.html";
-// }
+getUser();
 
 const registerForm = document.querySelector("#register-form");
 if (registerForm) {
@@ -11,12 +9,16 @@ if (registerForm) {
 		const name = document.querySelector("#name").value;
 		const email = document.querySelector("#email").value;
 		const password = document.querySelector("#password").value;
+		const message = document.querySelector(".message");
 		try {
 			registerForm.classList.add("loading");
 			const response = await register(name, email, password);
 			const result = await response.json();
+			if (result.verification_link !== null) {
+				message.innerHTML = `<a href="${result.verification_link}"> Click me to verify mail! </a>`;
+				return;
+			}
 
-			const message = document.querySelector(".message");
 			if (response.status === 422) {
 				message.classList.add("error");
 				message.innerHTML = result.message;
