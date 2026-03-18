@@ -8,10 +8,10 @@ export const initFilter = () => {
 		const button = e.target.closest(".filter-btn");
 		if (!button) return;
 
-		if (button.dataset.capacity) {
-			const capacity = parseInt(button.dataset.capacity, 10);
+		if (button.dataset.location) {
+			const location = String(button.dataset.location);
 			renderReservations(
-				getReservations().filter((table) => table.capacity >= capacity),
+				getReservations().filter((table) => table.location == location),
 			);
 			return;
 		}
