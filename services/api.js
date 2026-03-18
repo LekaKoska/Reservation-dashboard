@@ -9,11 +9,30 @@ export async function fetchTables() {
 	const data = await response.json();
 	return data;
 }
+export async function reservation(user_id, table_id, guest_number) {
+	const token = localStorage.getItem("token");
+	const response = await fetch(`${URL}/reservation`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify({
+			user_id,
+			guest_number,
+			table_id,
+		}),
+	});
+	return response;
+}
 
 export async function register(name, email, password) {
+	const token = localStorage.getItem("token");
 	const response = await fetch(`${URL}/auth/register`, {
 		method: "POST",
 		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 			Accept: "application/json",
 		},
@@ -40,6 +59,7 @@ export const logout = async () => {
 	});
 	localStorage.removeItem("token");
 	localStorage.removeItem("user_name");
+	localStorage.removeItem("user_id");
 };
 
 export async function login(email, password) {
