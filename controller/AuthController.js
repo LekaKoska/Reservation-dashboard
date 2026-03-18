@@ -27,6 +27,7 @@ if (registerForm) {
 			if (response.status === 201) {
 				localStorage.setItem("token", result.token);
 				localStorage.setItem("user_name", result.data.name);
+				localStorage.setItem("user_id", result.data.id);
 				message.classList.add("success");
 				message.innerHTML = result.message;
 				registerForm.classList.remove("loading");
@@ -56,7 +57,7 @@ if (loginForm) {
 
 			localStorage.setItem("token", result.token);
 			localStorage.setItem("user_name", result.data.name);
-
+			localStorage.setItem("user_id", result.data.id);
 			if (result.data.email_verified_at == null) {
 				window.location.href = "verify_mail.html";
 				return;
