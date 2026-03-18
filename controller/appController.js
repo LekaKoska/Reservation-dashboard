@@ -26,13 +26,10 @@ export function initApp() {
 		document.querySelector("#reservation-form").reset();
 		preOrder.classList.add("modal-hidden");
 	};
-
-	// Close the pre-order form when clicking outside the form area (including anywhere on page)
 	document.addEventListener("click", (e) => {
 		if (state.ignoreDocumentClick) return;
 		if (preOrder.classList.contains("modal-hidden")) return;
 		if (preOrder.contains(e.target)) return;
-		// Leave table clicks alone so user can select another table while modal is open
 		if (e.target.closest("#reservationGrid")) return;
 
 		closePreOrder();

@@ -15,6 +15,7 @@ export function handleTableClick(event, state) {
 			.addEventListener("submit", async (e) => {
 				e.preventDefault();
 				await tableReservation(state);
+				e.target.reset();
 				state.preOrder.classList.add("modal-hidden");
 				state.selectedTable = null;
 			});
