@@ -25,10 +25,11 @@
 				</div>
 
 				<div class="filter-group">
-					<p>Capacity</p>
-					<button data-capacity="2" class="filter-btn">2+</button>
-					<button data-capacity="4" class="filter-btn">4+</button>
-					<button data-capacity="6" class="filter-btn">6+</button>
+					<p>Location</p>
+					<button data-location="east" class="filter-btn">East</button>
+					<button data-location="west" class="filter-btn">West</button>
+					<button data-location="north" class="filter-btn">North</button>
+					<button data-location="south" class="filter-btn">South</button>
 				</div>
 			</aside>
 
@@ -37,6 +38,16 @@
 			</section>
 		</main>
 
+		<div class="reservation modal modal-hidden">
+			<form id="reservation-form">
+				<input
+					type="number"
+					placeholder="Enter a guest number"
+					id="guest_number"
+				/>
+				<button>Add guests</button>
+			</form>
+		</div>
 		<div class="modal modal-hidden" id="reservationModal">
 			<div class="modal-content">
 				<h3 id="modalTitle">Reservation</h3>

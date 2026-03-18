@@ -193,3 +193,64 @@ body {
 	transform: scale(0.97);
 	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
+
+.reservation.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #ffffff;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	width: 320px;
+	transition: all 0.3s ease-in-out;
+}
+
+#reservation-form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+#guest_number {
+	padding: 12px 15px;
+	border: 2px solid #e1e1e1;
+	border-radius: 8px;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.2s;
+}
+
+#guest_number:focus {
+	border-color: #060707;
+}
+
+#reservation-form button {
+	background-color: #040405;
+	color: white;
+	border: none;
+	padding: 12px;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 0.2s,
+		transform 0.1s;
+}
+
+#reservation-form button:hover {
+	background-color: #2980b9;
+}
+
+#reservation-form button:active {
+	transform: scale(0.98);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
