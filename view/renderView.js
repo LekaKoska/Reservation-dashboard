@@ -7,7 +7,7 @@ export function renderReservations(data) {
 		card.classList.add("card");
 		card.classList.add(table.status);
 
-		card.dataset.id = table.id;
+		card.dataset.id = table.table_id;
 		if (table.status === "taken") {
 			card.innerHTML = `${table.table_id}, ${table.location}, ${table.status}`;
 		} else {
