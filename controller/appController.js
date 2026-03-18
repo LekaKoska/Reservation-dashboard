@@ -4,6 +4,7 @@ import { renderReservations } from "../view/renderView.js";
 import { handleTableClick } from "./handleTable.js";
 import { initTables } from "./tableController.js";
 import { logout } from "../services/api.js";
+import { tableReservation } from "./tableReservation.js";
 
 export function initApp() {
 	initFilter();
@@ -11,40 +12,20 @@ export function initApp() {
 	const reservationBox = document.getElementById("reservationModal");
 	const btnCancel = reservationBox.querySelector(".btn-cancel");
 	const btnConfirm = reservationBox.querySelector(".btn-confirm");
+	const preOrder = document.querySelector(".reservation");
 
 	const state = {
 		selectedTable: null,
-		timeSlots: [],
-		selectedTime: null,
 		reservationBox,
+		preOrder,
 	};
 
 	const reservationGrid = document.getElementById("reservationGrid");
 	reservationGrid.addEventListener("click", (e) => handleTableClick(e, state));
 
-	const timesContainer = reservationBox.querySelector(".times");
-	timesContainer.addEventListener("click", (e) => {
-		if (!e.target.classList.contains("time-slot")) return;
-
-		document
-			.querySelectorAll(".time-slot")
-			.forEach((slot) => slot.classList.remove("active"));
-		e.target.classList.add("active");
-		state.selectedTime = e.target.textContent;
-	});
-
 	btnConfirm.addEventListener("click", () => {
 		if (!state.selectedTable || !state.selectedTime) {
-			alert("Select time first");
-			return;
-		}
-
-		state.selectedTable.timeSlots = state.selectedTable.timeSlots.filter(
-			(time) => time !== state.selectedTime,
-		);
-
-		if (state.selectedTable.timeSlots.length === 0) {
-			state.selectedTable.status = "reserved";
+			console.log("REZERVISAN");
 		}
 
 		state.selectedTable = null;
